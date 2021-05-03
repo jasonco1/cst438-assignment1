@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class Rating { // localhost:8080/hello?name=jason
-	
+public class Rating { // localhost:8080/movies/new
 	@Autowired
 	MovieRepository movieRepository;
 	
@@ -21,7 +20,6 @@ public class Rating { // localhost:8080/hello?name=jason
 		model.addAttribute("name", name);
 		model.addAttribute("time", new java.util.Date().toString());
 		return "index";
-		
 	}
 	
 	@GetMapping("/movies/new")
@@ -40,17 +38,15 @@ public class Rating { // localhost:8080/hello?name=jason
 		}
 		/* model.addAttribute("date", new java.util.Date().toString()); */
 		movieRepository.save(movie);
-		Iterable<Movie> movies = movieRepository.findAll();
+		Iterable<Movie> movies = movieRepository.findAll(); 
 		model.addAttribute("movies", movies);
 		return "movie_list";
 	}
 	
 	@GetMapping("/movie")
-	public String getAllPerson( Model model) {
+	public String getAllPeople( Model model) {
 		Iterable<Movie> movies = movieRepository.findAll();
 		model.addAttribute("movies", movies);
 		return "movie_list";	
 	}
-
-
 }
