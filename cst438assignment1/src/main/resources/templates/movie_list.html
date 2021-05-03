@@ -2,17 +2,17 @@
 <html xmlns:th="www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Movie List List</title>
+<title>Movie List</title>
 </head>
 <body>
-	<a href="/movies/new">Add a movie</a>
+	<a href="/movies/new">Movie Ratings</a>
 	<br />
 	<table>
 		<tr>
-			<th>First Name</th>
+			<th>First Name </th>
 			<th>Last Name</th>
-			<th>Movie Title</th>
-			<th>Movie Rating</th>
+			<th>Title</th> <!-- Adding "Movie" here might be redundant. -->
+			<th>Rating</th>
 			<th>Date</th>
 
 		</tr>
@@ -21,7 +21,10 @@
 			<td th:text="${movie.lastName}"></td>
 			<td th:text="${movie.movieTitle}"></td>
 			<td th:text="${movie.movieRating}"></td>
-			<!-- <td th:number="${movie.date}"></td> -->
+			<!-- <td th:number="${movie.date}"></td> --> 
+			<!-- You might try using a hidden form field here for date. In your constructor, 
+			use the Java Date function to assign the current date/time when an object is instantiated
+			from the Movie class. Using the hidden form for date will cause the date to be added when the user submits. -->
 		</tr>
 	</table>
 </body>
