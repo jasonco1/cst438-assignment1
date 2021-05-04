@@ -1,7 +1,5 @@
 package cst438;
 
-import java.security.Timestamp;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -30,72 +28,45 @@ public class Movie {
 	@NotNull
 	private int movieRating;
 	
-	@Column(name="date")
-	private Timestamp date;
-
+	 @NotNull 
+	 private String date;
+	 
 	public Movie() {
 		firstName = null;
 		lastName = null;
 		movieTitle = null;
-		movieRating = 0;
+		movieRating = 0;	
+		date = new java.util.Date().toString();
 	}
 	
-	public Movie(long id, String firstName, String lastName, String movieTitle, int movieRating, Timestamp date) {
+	public Movie(long id, String firstName, String lastName, String movieTitle, int movieRating, String date ) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.movieTitle = movieTitle;
 		this.movieRating = movieRating;
-		this.date = date;
+		this.date = new java.util.Date().toString();
+		
 	}
 
-	public long getId() {
-		return id;
-	}
+	public long getId() {return id;}
+	public void setId(long id) {this.id = id;}
 
-	public void setId(long id) {
-		this.id = id;
-	}
+	public String getFirstName() {return firstName;}
+	public void setFirstName(String firstName) {this.firstName = firstName;}
 
-	public String getFirstName() {
-		return firstName;
-	}
+	public String getLastName() {return lastName;}
+	public void setLastName(String lastName) {this.lastName = lastName;}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+	public String getMovieTitle() {return movieTitle;}
+	public void setMovieTitle(String movieTitle) {this.movieTitle = movieTitle;}
 
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getMovieTitle() {
-		return movieTitle;
-	}
-
-	public void setMovieTitle(String movieTitle) {
-		this.movieTitle = movieTitle;
-	}
-
-	public int getMovieRating() {
-		return movieRating;
-	}
-
-	public void setMovieRating(int movieRating) {
-		this.movieRating = movieRating;
-	}
+	public int getMovieRating() {return movieRating;}
+	public void setMovieRating(int movieRating) {this.movieRating = movieRating;}
 	
-	public Timestamp getDate() {
-		return date;
-	}
-
-	public void setDate(Timestamp date) {
-		this.date = date;
-	}
+	public String getDate() {return date;} 
+	public void setDate(String date){this.date = date;}
+	 
 		
 }

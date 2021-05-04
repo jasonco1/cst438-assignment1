@@ -11,19 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class Rating { // localhost:8080/hello?name=jason
+public class MovieController { // localhost:8080/
 	
 	@Autowired
 	MovieRepository movieRepository;
-	
-	@GetMapping("/movies")
-	public String hello(@RequestParam("name") String name, Model model) {
-		model.addAttribute("name", name);
-		model.addAttribute("time", new java.util.Date().toString());
-		return "index";
 		
-	}
-	
 	@GetMapping("/movies/new")
 	public String createPerson(Model model) {
 		Movie movie = new Movie();
@@ -31,23 +23,22 @@ public class Rating { // localhost:8080/hello?name=jason
 		return "movie_form";				
 	}
 	
-	@PostMapping("/movie")
+	@PostMapping("/movies")
 	public String processMovieForm(@Valid Movie movie, 
 			BindingResult result, 
 			Model model) {
 		if (result.hasErrors()) {
 			return "movie_form";
 		}
-		/* model.addAttribute("date", new java.util.Date().toString()); */
 		movieRepository.save(movie);
 		Iterable<Movie> movies = movieRepository.findAll();
 		model.addAttribute("movies", movies);
 		return "movie_list";
 	}
 	
-	@GetMapping("/movie")
+	@GetMapping("/movies")
 	public String getAllPerson( Model model) {
-		Iterable<Movie> movies = movieRepository.findAll();
+		Iterable<Movie> movies = movieRepository.findAllMovieRatingsOrderByTitleDateDesc();
 		model.addAttribute("movies", movies);
 		return "movie_list";	
 	}
