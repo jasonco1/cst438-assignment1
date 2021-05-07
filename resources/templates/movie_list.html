@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Movie Ratings List</title>
+</head>
+<body>
+	<a href="/movies/new">Add a movie</a> <br>
+	<a href="/movies">Sorted movie ratings</a> <br>
+	<br />
+	<table>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Movie Title</th>
+			<th>Movie Rating</th>
+			<th>Date</th>
+
+		</tr>
+		<tr th:each="movie:${movies}">
+			<td th:text="${movie.firstName}"></td>
+			<td th:text="${movie.lastName}"></td>
+			<td th:text="${movie.movieTitle}"></td>
+			<td th:text="${movie.movieRating}"></td>
+			<td th:text="${movie.date}"></td>
+		</tr>
+	</table>
+</body>
+</html>
